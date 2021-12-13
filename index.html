@@ -9,12 +9,15 @@
     <link rel="manifest" href="manifest.json">
     <style>
         html {
+            /* gruvbox dark, bg, fg, fg0 */
+            --color-bg: #282828;
+            --color-fg: #ebdbb2;
+            --color-fh: #fbf1c7;
             height: 100%;
         }
 
         body {
-            /* base03 */
-            background-color: #002b36;
+            background-color: var(--color-bg);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -33,16 +36,18 @@
         }
 
         a {
-            /* base0 */
-            color: #839496;
+            color: var(--color-fg);
             text-decoration: none;
         }
 
         a:hover {
-            /* base1 */
-            color: #93a1a1;
+            color: var(--color-fh)
         }
     </style>
+    <link rel="alternate stylesheet" href="gruvbox-dark.css" type="text/css" title="Gruvbox, Dark">
+    <link rel="alternate stylesheet" href="gruvbox-light.css" type="text/css" title="Gruvbox, Light">
+    <link rel="alternate stylesheet" href="solarized-dark.css" type="text/css" title="Solarized, Dark">
+    <link rel="alternate stylesheet" href="solarized-light.css" type="text/css" title="Solarized, Light">
 </head>
 
 <body>

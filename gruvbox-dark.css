@@ -1,0 +1,6 @@
+html {
+    /* gruvbox dark, bg, fg, fg0 */
+    --color-bg: #282828;
+    --color-fg: #ebdbb2;
+    --color-fh: #fbf1c7;
+}
