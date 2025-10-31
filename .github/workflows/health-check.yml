@@ -1,0 +1,37 @@
+name: Health Check
+
+on:
+  workflow_call:
+    inputs:
+      url:
+        required: true
+        type: string
+
+jobs:
+  check-https:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check HTTPS is working
+        run: curl --fail --silent --show-error --location --max-time 10 ${{ inputs.url }} > /dev/null
+
+  check-200:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check status code is 200
+        run: |
+          STATUS=$(curl --silent --output /dev/null --write-out "%{http_code}" --location --max-time 10 ${{ inputs.url }})
+          if [ "$STATUS" -ne 200 ]; then
+            echo "Expected 200, got $STATUS"
+            exit 1
+          fi
+
+  check-html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check response is HTML
+        run: |
+          CONTENT_TYPE=$(curl --silent --head --location --max-time 10 ${{ inputs.url }} | grep -i "content-type:" | head -n 1)
+          if ! echo "$CONTENT_TYPE" | grep -iq "text/html"; then
+            echo "Response is not HTML"
+            exit 1
+          fi

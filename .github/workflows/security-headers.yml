@@ -1,0 +1,17 @@
+name: Security Headers Check
+
+on:
+  workflow_call:
+    inputs:
+      url:
+        required: true
+        type: string
+
+jobs:
+  check-headers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Check security headers
+        run: ./.github/workflows/security-headers.sh "${{ inputs.url }}"

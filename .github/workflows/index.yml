@@ -1,0 +1,57 @@
+name: Check websites
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Every Monday at 6:00 AM
+  workflow_dispatch:
+
+jobs:
+  aaronjameslang-health:
+    uses: ./.github/workflows/health-check.yml
+    with:
+      url: https://aaronjamesla.ng
+
+  aaronjameslang-lighthouse:
+    uses: ./.github/workflows/lighthouse.yml
+    with:
+      url: https://aaronjamesla.ng
+
+  aaronjameslang-links:
+    uses: ./.github/workflows/broken-links.yml
+    with:
+      url: https://aaronjamesla.ng
+
+  aaronjameslang-ssl:
+    uses: ./.github/workflows/ssl-expiry.yml
+    with:
+      url: https://aaronjamesla.ng
+
+  aaronjameslang-headers:
+    uses: ./.github/workflows/security-headers.yml
+    with:
+      url: https://aaronjamesla.ng
+
+  ajlang-health:
+    uses: ./.github/workflows/health-check.yml
+    with:
+      url: https://ajla.ng
+
+  ajlang-lighthouse:
+    uses: ./.github/workflows/lighthouse.yml
+    with:
+      url: https://ajla.ng
+
+  ajlang-links:
+    uses: ./.github/workflows/broken-links.yml
+    with:
+      url: https://ajla.ng
+
+  ajlang-ssl:
+    uses: ./.github/workflows/ssl-expiry.yml
+    with:
+      url: https://ajla.ng
+
+  ajlang-headers:
+    uses: ./.github/workflows/security-headers.yml
+    with:
+      url: https://ajla.ng

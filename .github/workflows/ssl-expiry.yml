@@ -1,0 +1,17 @@
+name: SSL Certificate Expiry Check
+
+on:
+  workflow_call:
+    inputs:
+      url:
+        required: true
+        type: string
+
+jobs:
+  check-ssl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Check SSL certificate expiry
+        run: ./.github/workflows/ssl-expiry.sh "${{ inputs.url }}"
